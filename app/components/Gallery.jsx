@@ -47,14 +47,14 @@ export default function Gallery() {
             
             <h2 className="font-playfair text-[clamp(3rem,8vw,5rem)] font-thin tracking-[0.02em] mb-5">
               <span className="bg-gradient-to-r from-[#faf8f3] via-[#d4af37] to-[#faf8f3] bg-clip-text text-transparent">
-                OUR MOMENTS
+                NUESTROS MOMENTOS
               </span>
             </h2>
             <p className="text-lg font-light tracking-[2px] uppercase opacity-60 text-[#faf8f3]">
-              A Collection of Memories
+              Poco a poco empezamos a crecer juntos, compartiendo sueños e ilusiones, hasta que llegó el capítulo más esperado: 'Nos casamos'.
             </p>
             <p className="text-sm text-[#d4af37]/50 mt-4">
-              Click on any image to view in full size
+              Haz clic en cualquier imagen para verla en tamaño completo
             </p>
           </motion.div>
 
@@ -111,7 +111,7 @@ export default function Gallery() {
             className="text-center mt-16"
           >
             <p className="text-lg text-[#faf8f3] italic opacity-80 font-playfair">
-              "Every picture tells a story, but our story is just beginning..."
+              "Cada imagen cuenta una historia, pero nuestra historia apenas está comenzando..."
             </p>
           </motion.div>
         </div>

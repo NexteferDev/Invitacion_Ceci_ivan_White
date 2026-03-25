@@ -8,24 +8,25 @@ import settings from '../config/settings';
 import Lightbox from './shared/Lightbox';
 
 export default function WeddingDetails() {
-  const { wedding, venue, events, social, venueGallery } = settings;
+  const { wedding, venue, events, social, venueGallery, receptionVenue } = settings;
   const [activeTab, setActiveTab] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [calendarUrl, setCalendarUrl] = useState('#');
   const [mounted, setMounted] = useState(false);
-  
+
+
   // Generate Google Calendar URL on client side only
   React.useEffect(() => {
     setMounted(true);
     const startDate = new Date(`${wedding.date}T${wedding.ceremony.time}:00`);
     const endDate = new Date(`${wedding.date}T${wedding.reception.endTime}:00`);
-    
+
     // Format dates for Google Calendar (YYYYMMDDTHHmmss)
     const formatDate = (date) => {
       return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
     };
-    
+
     const eventDetails = {
       text: `${settings.couple.bride.name} & ${settings.couple.groom.name}'s Wedding`,
       dates: `${formatDate(startDate)}/${formatDate(endDate)}`,
@@ -33,7 +34,7 @@ export default function WeddingDetails() {
       location: `${venue.name}, ${venue.address.street}, ${venue.address.district}, ${venue.address.city}, ${venue.address.country}`,
       ctz: 'Asia/Bangkok' // Adjust timezone as needed
     };
-    
+
     const baseUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
     const params = new URLSearchParams({
       text: eventDetails.text,
@@ -42,10 +43,10 @@ export default function WeddingDetails() {
       location: eventDetails.location,
       ctz: eventDetails.ctz
     });
-    
+
     setCalendarUrl(`${baseUrl}&${params.toString()}`);
   }, []);
-  
+
   // Lightbox functions
   const openLightbox = (index) => {
     setCurrentIndex(index);
@@ -59,7 +60,7 @@ export default function WeddingDetails() {
   const navigateToImage = (index) => {
     setCurrentIndex(index);
   };
-  
+
   // Timeline data
   const timeline = [
     {
@@ -101,78 +102,49 @@ export default function WeddingDetails() {
   ];
 
   // Detail tabs
-  const detailTabs = [
+ const detailTabs = [
     {
-      title: "The Ceremony",
+      title: "La Ceremonia",
       icon: Heart,
       content: {
         title: events.ceremony.title,
         time: wedding.ceremony.displayTime,
         location: venue.ceremonyLocation,
-        duration: "30 minutes",
-        notes: [
-          "Garden ceremony with natural backdrop",
-          "Unplugged ceremony - please no phones",
-          "Professional photography provided",
-          "Reserved seating for family"
-        ]
+        duration: "Celebración Eucarística"
       }
     },
     {
-      title: "The Reception",
+      title: "La Recepción",
       icon: Music,
       content: {
         title: events.reception.title,
         time: wedding.reception.displayTime,
-        location: "Grand Ballroom",
-        duration: `Until ${wedding.reception.displayEndTime}`,
-        notes: events.reception.features
+        location: "Salón de Baile",
+        duration: `Una noche de celebración y diversión`
       }
     },
     {
-      title: "Dress Code",
+      title: "Código de Vestimenta",
       icon: Palette,
       content: {
-        title: "Attire Guidelines",
+        title: "Directrices de vestimenta",
         time: events.ceremony.dressCode,
-        location: "Color Palette",
-        duration: events.ceremony.colors.join(', '),
-        notes: [
-          "Formal/Cocktail attire requested",
-          "Light, breathable fabrics recommended",
-          "Ladies: Block heels suggested for garden",
-          "Gentlemen: Suit jacket optional after ceremony"
-        ]
+        location: "Lo importante es que vengas cómodo(a).",
+        duration: events.ceremony.colors.join(', ')
       }
     },
-    {
-      title: "Guest Info",
-      icon: Gift,
-      content: {
-        title: "Important Information",
-        time: "RSVP by",
-        location: wedding.displayDate,
-        duration: "Accommodations",
-        notes: [
-          "Hotel blocks available nearby",
-          "Shuttle service from select hotels",
-          "Dietary restrictions accommodated",
-          `Wedding hashtag: ${social.instagram.hashtag}`
-        ]
-      }
-    }
-  ];
+  ]
 
   return (
     <>
       <section id="wedding-details" className="min-h-screen py-20 bg-[#0a0a0a] relative overflow-hidden">
         {/* Elegant Gradient Background - Same as Hero */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f]"/>
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#d4af3715] via-transparent to-[#ff6b6b10]"/>
-          <div className="absolute inset-0 bg-gradient-to-bl from-[#87a87810] via-transparent to-transparent"/>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(212,175,55,0.08)_0%,_transparent_40%)]"/>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(135,168,120,0.06)_0%,_transparent_40%)]"/>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f]" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#d4af3715] via-transparent to-[#ff6b6b10]" />
+          <div className="absolute inset-0 bg-gradient-to-bl from-[#87a87810] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(212,175,55,0.08)_0%,_transparent_40%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(135,168,120,0.06)_0%,_transparent_40%)]" />
         </div>
 
         {/* Floating Particles - reduced based on performance */}
@@ -186,7 +158,7 @@ export default function WeddingDetails() {
                   left: `${(i * 19) % 100}%`,
                   top: `${(i * 13) % 100}%`
                 }}
-                animate={{ 
+                animate={{
                   y: [-20, -120],
                   opacity: [0, 1, 0]
                 }}
@@ -201,6 +173,80 @@ export default function WeddingDetails() {
           </div>
         )}
 
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10"
+        >
+          <div className="space-y-12 text-center text-white">
+
+            {/* TÍTULO */}
+            <p className="text-sm tracking-[0.3em] uppercase text-[#d4af37]/80">
+              Con la bendición de nuestros padres
+            </p>
+
+            {/* PADRES NOVIA */}
+            <div>
+              <p className="text-xs tracking-[0.3em] uppercase text-[#d4af37]/60 mb-4">
+                Padres de la novia
+              </p>
+
+              <div className="h-[1px] w-32 mx-auto bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mb-6" />
+
+              <p className="font-playfair text-3xl md:text-4xl tracking-wide">
+                Felipe Salinas González
+              </p>
+              <p className="font-playfair text-3xl md:text-4xl tracking-wide">
+                María Guadalupe González Crescencio
+              </p>
+
+              <div className="h-[1px] w-32 mx-auto bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mt-6" />
+            </div>
+
+            {/* PADRES NOVIO */}
+            <div>
+              <p className="text-xs tracking-[0.3em] uppercase text-[#d4af37]/60 mb-4">
+                Padres del novio
+              </p>
+
+              <div className="h-[1px] w-32 mx-auto bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mb-6" />
+
+              <p className="font-playfair text-3xl md:text-4xl tracking-wide">
+                Tomás Solís Cruz
+              </p>
+              <p className="font-playfair text-3xl md:text-4xl tracking-wide">
+                María Luisa Cruz Gabriel
+              </p>
+
+
+              <div className="h-[1px] w-32 mx-auto bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mt-6" />
+            </div>
+
+            {/* PADRINOS */}
+            <div>
+              <p className="text-xs tracking-[0.3em] uppercase text-[#d4af37]/60 mb-4">
+                Padrinos
+              </p>
+
+              <div className="h-[1px] w-32 mx-auto bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mb-6" />
+
+              <p className="font-playfair text-3xl md:text-4xl tracking-wide">
+                María del Rosario Martínez Salinas
+              </p>
+              <p className="font-playfair text-3xl md:text-4xl tracking-wide">
+                Rubén Salinas González
+              </p>
+
+
+              <div className="h-[1px] w-32 mx-auto bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mt-6" />
+            </div>
+
+          </div>
+        </motion.div>
+
+
+
         <div className="max-w-7xl w-full mx-auto px-6 relative z-10">
           {/* Header */}
           <motion.div
@@ -210,23 +256,25 @@ export default function WeddingDetails() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <motion.div 
+            <motion.div
               className="h-[0.5px] bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent mb-12"
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               transition={{ duration: 1.5, ease: "easeOut" }}
               viewport={{ once: true }}
             />
-            
+
             <h2 className="font-playfair text-[clamp(3.5rem,9vw,6rem)] font-thin tracking-[0.02em] mb-6">
               <span className="bg-gradient-to-r from-[#faf8f3] via-[#d4af37] to-[#faf8f3] bg-clip-text text-transparent">
-                WEDDING DETAILS
+                NUESTRO GRAN DÍA
               </span>
             </h2>
             <p className="text-lg font-light tracking-[0.2em] uppercase text-[#faf8f3]/40">
-              Everything You Need To Know
+              Todo lo que necesitas saber
             </p>
           </motion.div>
+
+
 
           {/* Main Venue Card with Hero Image */}
           <motion.div
@@ -236,18 +284,19 @@ export default function WeddingDetails() {
             viewport={{ once: true }}
             className="mb-20"
           >
+
             {/* Hero Banner with Wide Image */}
             <div className="relative h-[500px] rounded-3xl overflow-hidden mb-8">
               <Image
                 src={venueGallery.heroImage}
                 alt={venue.name}
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/50 to-[#0a0a0a]/80"></div>
-              
-              <motion.div 
+
+              <motion.div
                 className="absolute inset-0 flex items-center justify-center text-center z-10"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -255,7 +304,7 @@ export default function WeddingDetails() {
                 viewport={{ once: true }}
               >
                 <div>
-                  <motion.h3 
+                  <motion.h3
                     className="drop-shadow-[2px_2px_4px_black] font-playfair text-[clamp(3rem,7vw,5rem)] font-thin tracking-[0.02em] leading-tight"
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -266,27 +315,28 @@ export default function WeddingDetails() {
                       {venue.name.toUpperCase()}
                     </span>
                   </motion.h3>
-                  <motion.p 
+                  <motion.p
                     className="text-white/80 text-xl mt-4 max-w-2xl mx-auto px-6"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 1, delay: 0.7 }}
                     viewport={{ once: true }}
                   >
-                    The Venue of the Wedding
+                    El lugar de la boda
                   </motion.p>
                 </div>
               </motion.div>
             </div>
 
+
             {/* Venue Info Card */}
             <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10">
               <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-50" />
-              
+
               <div className="relative p-12 lg:p-16">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                   <div>
-                    <motion.div 
+                    <motion.div
                       className="inline-flex items-center gap-3 mb-6"
                       initial={{ x: -20, opacity: 0 }}
                       whileInView={{ x: 0, opacity: 1 }}
@@ -294,10 +344,10 @@ export default function WeddingDetails() {
                       viewport={{ once: true }}
                     >
                       <span className="text-sm font-medium tracking-wider text-[#d4af37]/80 uppercase">
-                        Full Address
+                        Dirección completa
                       </span>
                     </motion.div>
-                    
+
                     <div className="space-y-3 text-[#faf8f3]/70">
                       <p className="text-lg">{venue.address.street}</p>
                       <p className="text-lg">{venue.address.district}</p>
@@ -314,9 +364,9 @@ export default function WeddingDetails() {
                         whileHover={performance.animationLevel === 'full' ? { scale: 1.05 } : {}}
                         whileTap={performance.animationLevel === 'full' ? { scale: 0.95 } : {}}
                       >
-                        View on Map
+                        Ver en Google Maps
                       </motion.a>
-                      
+
                       {mounted && (
                         <motion.a
                           href={calendarUrl}
@@ -326,7 +376,7 @@ export default function WeddingDetails() {
                           whileHover={performance.animationLevel === 'full' ? { scale: 1.05 } : {}}
                           whileTap={performance.animationLevel === 'full' ? { scale: 0.95 } : {}}
                         >
-                          Add to Calendar
+                          Añadir al Calendario
                         </motion.a>
                       )}
                     </div>
@@ -339,8 +389,8 @@ export default function WeddingDetails() {
                       transition={{ duration: 0.5 }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 to-transparent z-10" />
-                      <img 
-                        src={venue.imageUrl || "/botanical-house-bkk/1.jpg"}
+                      <img
+                        src={venue.imageUrl || "/Iglesia/Iglesia.jpg"}
                         alt={venue.name}
                         className="w-full h-full object-cover"
                       />
@@ -349,7 +399,7 @@ export default function WeddingDetails() {
                           {wedding.displayDate}
                         </p>
                         <p className="text-[#d4af37] text-lg">
-                          {wedding.ceremony.displayTime} Onwards
+                          {wedding.ceremony.displayTime}
                         </p>
                       </div>
                     </motion.div>
@@ -358,6 +408,104 @@ export default function WeddingDetails() {
               </div>
             </div>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-20"
+          >
+            <div className="relative h-[500px] rounded-3xl overflow-hidden mb-8">
+              <Image
+                src={receptionVenue.image}
+                alt={receptionVenue.name}
+                fill
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/50 to-[#0a0a0a]/80"></div>
+
+              <div className="absolute inset-0 flex items-center justify-center text-center z-10">
+                <div>
+                  <h3 className="font-playfair text-[clamp(3rem,7vw,5rem)] font-thin">
+                    <span className="bg-gradient-to-r from-[#faf8f3] via-[#d4af37] to-[#faf8f3] bg-clip-text text-transparent">
+                      {receptionVenue.name.toUpperCase()}
+                    </span>
+                  </h3>
+                  <p className="text-white/80 text-xl mt-4">
+                    Recepción
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Venue Info Card */}
+          <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-50" />
+
+            <div className="relative p-12 lg:p-16">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                  <motion.div
+                    className="inline-flex items-center gap-3 mb-6"
+                    initial={{ x: -20, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    viewport={{ once: true }}
+                  >
+                    <span className="text-sm font-medium tracking-wider text-[#d4af37]/80 uppercase">
+                      Dirección completa
+                    </span>
+                  </motion.div>
+
+                  <div className="space-y-3 text-[#faf8f3]/70">
+                    <p className="text-lg">{receptionVenue.address.street}</p>
+                    <p className="text-lg">{receptionVenue.address.district}</p>
+                    <p className="text-lg">{receptionVenue.address.city}, {receptionVenue.address.country}</p>
+                    <p className="text-sm mt-6 text-[#d4af37]/60">{receptionVenue.parking}</p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-4 mt-8">
+                    <motion.a
+                      href={receptionVenue.googleMapsUrl2}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 border border-[#d4af37]/50 text-[#d4af37] hover:bg-[#d4af37] hover:text-[#0a0a0a] transition-all duration-300 rounded-full"
+                      whileHover={performance.animationLevel === 'full' ? { scale: 1.05 } : {}}
+                      whileTap={performance.animationLevel === 'full' ? { scale: 0.95 } : {}}
+                    >
+                      Ver en Google Maps
+                    </motion.a>
+
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <motion.div
+                    className="relative h-[400px] rounded-2xl overflow-hidden"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 to-transparent z-10" />
+                    <img
+                      src={venue.imageUrl || "/Salon/SalonMarti.jpg"}
+                      alt={venue.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute bottom-6 left-6 z-20">
+                      <p className="text-[#faf8f3]/80 text-sm tracking-wider uppercase">
+                        {wedding.displayDate}
+                      </p>
+                      <p className="text-[#d4af37] text-lg">
+                        3:00 PM En adelante
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* Venue Gallery Section */}
           <motion.div
@@ -375,10 +523,10 @@ export default function WeddingDetails() {
               className="text-center mb-12"
             >
               <h3 className="font-playfair text-4xl font-thin text-[#faf8f3] mb-4">
-                Explore The Venue
+                Explorar el lugar
               </h3>
               <p className="text-lg text-[#faf8f3]/60">
-                Click on any image to view in full size
+                Haz clic en cualquier imagen para verla en tamaño completo
               </p>
             </motion.div>
 
@@ -408,6 +556,8 @@ export default function WeddingDetails() {
                 </motion.div>
               ))}
             </div>
+
+
           </motion.div>
 
           {/* Detail Tabs */}
@@ -426,11 +576,10 @@ export default function WeddingDetails() {
                   <motion.button
                     key={index}
                     onClick={() => setActiveTab(index)}
-                    className={`flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 ${
-                      activeTab === index 
-                        ? 'border-[#d4af37] bg-[#d4af37]/10 text-[#d4af37]' 
+                    className={`flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 ${activeTab === index
+                        ? 'border-[#d4af37] bg-[#d4af37]/10 text-[#d4af37]'
                         : 'border-white/10 text-[#faf8f3]/50 hover:border-[#d4af37]/50 hover:text-[#d4af37]/70'
-                    }`}
+                      }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -450,41 +599,24 @@ export default function WeddingDetails() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="max-w-4xl mx-auto"
+                className="max-w-2xl mx-auto" // Reducido el ancho máximo para mejor centrado sin la columna de notas
               >
-                <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="font-playfair text-3xl font-thin text-[#faf8f3] mb-6">
-                        {detailTabs[activeTab].content.title}
-                      </h3>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <span className="text-[#d4af37]/60">•</span>
-                          <span className="text-[#faf8f3]/70">{detailTabs[activeTab].content.time}</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <span className="text-[#d4af37]/60">•</span>
-                          <span className="text-[#faf8f3]/70">{detailTabs[activeTab].content.location}</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <span className="text-[#d4af37]/60">•</span>
-                          <span className="text-[#faf8f3]/70">{detailTabs[activeTab].content.duration}</span>
-                        </div>
-                      </div>
+                <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10 text-center">
+                  <h3 className="font-playfair text-4xl font-thin text-[#faf8f3] mb-8">
+                    {detailTabs[activeTab].content.title}
+                  </h3>
+                  <div className="space-y-6">
+                    <div className="flex items-center justify-center gap-4">
+                      <Clock className="w-5 h-5 text-[#d4af37]/60" />
+                      <span className="text-xl text-[#faf8f3]/80">{detailTabs[activeTab].content.time}</span>
                     </div>
-                    <div>
-                      <h4 className="text-sm font-medium tracking-wider text-[#d4af37]/80 uppercase mb-4">
-                        Important Notes
-                      </h4>
-                      <ul className="space-y-3">
-                        {detailTabs[activeTab].content.notes.map((note, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <span className="text-[#d4af37] mt-1">•</span>
-                            <span className="text-[#faf8f3]/60 text-sm">{note}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="flex items-center justify-center gap-4">
+                      <MapPin className="w-5 h-5 text-[#d4af37]/60" />
+                      <span className="text-xl text-[#faf8f3]/80">{detailTabs[activeTab].content.location}</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-4">
+                      <Sparkles className="w-5 h-5 text-[#d4af37]/60" />
+                      <span className="text-xl text-[#faf8f3]/80">{detailTabs[activeTab].content.duration}</span>
                     </div>
                   </div>
                 </div>
@@ -492,74 +624,7 @@ export default function WeddingDetails() {
             </AnimatePresence>
           </motion.div>
 
-          {/* Timeline */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="font-playfair text-4xl font-thin text-center text-[#faf8f3] mb-12">
-              Wedding Day Timeline
-            </h3>
-            
-            <div className="relative">
-              {/* Timeline Line - hidden on mobile */}
-              <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-[0.5px] h-full bg-gradient-to-b from-transparent via-[#d4af37]/30 to-transparent" />
-              
-              {/* Timeline Items */}
-              <div className="space-y-12">
-                {timeline.map((item, index) => {
-                  const Icon = item.icon;
-                  const isEven = index % 2 === 0;
-                  
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className={`flex items-center ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex-col lg:flex-row gap-8`}
-                    >
-                      {/* Content */}
-                      <div className={`flex-1 ${isEven ? 'lg:text-right' : 'lg:text-left'} text-center`}>
-                        <motion.div 
-                          className="inline-block"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <p className="text-[#d4af37] text-sm tracking-wider uppercase mb-2">
-                            {item.time}
-                          </p>
-                          <h4 className="font-playfair text-2xl text-[#faf8f3] mb-2">
-                            {item.title}
-                          </h4>
-                          <p className="text-[#faf8f3]/50 text-sm">
-                            {item.description}
-                          </p>
-                        </motion.div>
-                      </div>
-                      
-                      {/* Icon Node */}
-                      <motion.div 
-                        className="relative z-10"
-                        whileHover={{ scale: 1.2, rotate: 360 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <div className="w-12 h-12 bg-[#0a0a0a] rounded-full flex items-center justify-center border-2 border-[#d4af37]/30">
-                          <span className="text-[#d4af37] text-xs font-bold">{index + 1}</span>
-                        </div>
-                      </motion.div>
-                      
-                      {/* Spacer for opposite side */}
-                      <div className="flex-1 hidden lg:block" />
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
+
 
           {/* Social Media & Hashtag */}
           <motion.div
@@ -571,7 +636,7 @@ export default function WeddingDetails() {
           >
             <div className="inline-block bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl p-8 border border-white/10">
               <p className="text-sm tracking-wider text-[#faf8f3]/60 uppercase mb-2">
-                Share Your Moments
+                Comparte tus momentos
               </p>
               <p className="font-playfair text-2xl text-[#d4af37]">
                 {social.instagram.hashtag}

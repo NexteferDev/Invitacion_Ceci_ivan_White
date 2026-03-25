@@ -50,8 +50,8 @@ export default function Footer() {
 
                     {/* Contact Info */}
                     <p className="text-lg text-[#faf8f3] opacity-80 leading-relaxed mb-12">
-                        We can't wait to celebrate with you<br/>
-                        For any questions, please contact us at<br/>
+                        Estamos ansiosos por celebrar con ustedes.<br/>
+                        Para cualquier pregunta, por favor contáctenos<br/>
                         <a 
                             href={`mailto:${settings.couple.email}`}
                             className="text-[#d4af37] hover:text-[#ff6b6b] transition-colors duration-300"
@@ -108,18 +108,18 @@ export default function Footer() {
                         </motion.div>
 
                         <p className="text-xs text-[#faf8f3] opacity-60 tracking-wider uppercase">
-                            Made with love for our special day
+                            Hecho con amor para nuestro día especial
                         </p>
                         
                         <p className="text-[10px] text-[#faf8f3] opacity-50 mt-4">
-                            Designed & Developed by{' '}
+                            Diseñado y Creado por{' '}
                             <a 
-                                href="https://george.khananaev.com/" 
+                                href="https://www.instagram.com/christiansegvil?igsh=eDF0eXZyNWEzaXRx&utm_source=qr" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 className="text-[#d4af37] hover:text-[#f4e4a1] transition-colors duration-300"
                             >
-                                George Khananaev
+                                Creaciones SegVil
                             </a>
                         </p>
                     </div>

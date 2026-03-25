@@ -27,12 +27,11 @@ export default function FloatingMenu() {
 
   const menuItems = [
     { name: 'Home', href: '#hero', icon: Heart },
-    { name: 'Countdown', href: '#countdown', icon: Calendar },
-    { name: 'Details', href: '#wedding-details', icon: MapPin },
-    { name: 'Our Story', href: '#love-story', icon: Heart },
-    { name: 'Gallery', href: '#gallery', icon: Camera },
-    { name: 'Contact', href: '#contact', icon: Users },
-    { name: 'RSVP', href: '#rsvp', icon: Mail },
+    { name: 'Fecha', href: '#countdown', icon: Calendar },
+    { name: 'Detalles', href: '#wedding-details', icon: MapPin },
+    { name: 'Nuestra Historia', href: '#love-story', icon: Heart },
+    { name: 'Galería', href: '#gallery', icon: Camera },
+    { name: 'Asistencia', href: '#rspv', icon: Users },
   ];
 
   const scrollToSection = (href) => {

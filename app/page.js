@@ -44,9 +44,6 @@ export default function Home() {
         <Contact />
       </Suspense>
       <Suspense fallback={<LoadingFallback />}>
-        <RSVPForm />
-      </Suspense>
-      <Suspense fallback={<LoadingFallback />}>
         <Footer />
       </Suspense>
     </div>

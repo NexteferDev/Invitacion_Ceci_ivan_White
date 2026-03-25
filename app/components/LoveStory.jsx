@@ -17,10 +17,11 @@ export default function LoveStory() {
   
   // Map images to milestones
   const imageMap = {
-    0: '/love-story/coffe.webp',
-    1: '/love-story/first_adventure.webp',
-    2: '/love-story/proposal.webp',
-    3: '/love-story/wedding.webp'
+    0: '/love-story/7.jpeg',
+    1: '/love-story/8.jpeg',
+    2: '/love-story/9.jpeg',
+    3: '/love-story/10.jpeg'
+
   };
   
   const milestones = settings.loveStory.map((story, idx) => ({
@@ -96,10 +97,10 @@ export default function LoveStory() {
             viewport={{ once: true }}
           >
             <span className="block bg-gradient-to-r from-[#faf8f3] via-[#d4af37] to-[#faf8f3] bg-clip-text text-transparent">
-              OUR
+              NUESTRO
             </span>
             <span className="block bg-gradient-to-r from-[#faf8f3] via-[#d4af37] to-[#faf8f3] bg-clip-text text-transparent mt-2">
-              JOURNEY
+              VIAJE
             </span>
           </motion.h2>
 
@@ -110,7 +111,7 @@ export default function LoveStory() {
             transition={{ duration: 1, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            A Collection of Moments
+            Una Colección de Momentos
           </motion.p>
 
           {/* Scroll Indicator - simplified for mobile */}
@@ -286,11 +287,10 @@ export default function LoveStory() {
               viewport={{ once: true }}
             >
               <p className="font-playfair text-2xl lg:text-3xl font-thin italic text-[#faf8f3]/70 leading-relaxed">
-                "In all the world, there is no heart for me like yours.
-                <span className="block mt-2">In all the world, there is no love for you like mine."</span>
+              Nos conocimos cuando menos lo esperábamos, sin saber que nuestras vidas cambiarían para siempre. Desde entonces hemos reído, crecido y superado retos, pero siempre juntos, convencidos de que el amor verdadero se construye con cada nuevo amanecer.
               </p>
               <cite className="block mt-8 text-xs tracking-[0.3em] uppercase text-[#d4af37]/40 not-italic">
-                — Maya Angelou
+                — Nuestra historia de amor
               </cite>
             </motion.blockquote>
           </div>

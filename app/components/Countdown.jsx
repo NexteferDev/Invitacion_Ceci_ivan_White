@@ -6,7 +6,7 @@ import settings from '../config/settings';
 
 export default function Countdown() {
   const [timeLeft, setTimeLeft] = useState({
-    days: 0,
+    days : 0,
     hours: 0,
     minutes: 0,
     seconds: 0
@@ -39,7 +39,7 @@ export default function Countdown() {
       if (distance > 0) {
         // Before wedding
         setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          days : Math.floor(distance / (1000 * 60 * 60 * 24)),
           hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
           minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((distance % (1000 * 60)) / 1000)
@@ -65,7 +65,7 @@ export default function Countdown() {
   }, []);
 
   return (
-    <section id="countdown" className="min-h-screen flex items-center justify-center py-20 bg-gradient-to-br from-[#faf8f3] via-white to-[#f5f0e8] relative overflow-hidden" onClick={handleCountdownClick}>
+    <section id="countdown" className="min-h-screen flex items-center justify-center py-20 bg-gradient-to-br from-[#f8f5ef] via-[#f1e4c3] to-[#e8d8a8] relative overflow-hidden" onClick={handleCountdownClick}>
       {/* Animated gradient orbs - lighter */}
       <div className="absolute inset-0">
         {mounted && (
@@ -154,11 +154,11 @@ export default function Countdown() {
         {/* Floating small hearts */}
         {mounted && [...Array(15)].map((_, i) => {
           const heartColors = [
-            'text-[#ffb6c1]/35',  // light pink
-            'text-[#ff9999]/30',  // light coral
-            'text-[#ffc0cb]/35',  // pink
-            'text-[#dda0dd]/30',  // plum
-            'text-[#f4a460]/30',  // sandy brown
+            'text-[#d4af37]/40', // dorado
+            'text-[#e6c200]/30', // dorado claro
+            'text-[#f5deb3]/30', // beige elegante
+            'text-[#c0a060]/30', // gold oscuro
+            'text-[#ffffff]/20', // blanco suave
           ];
           const color = heartColors[i % heartColors.length];
           
@@ -244,7 +244,7 @@ export default function Countdown() {
             viewport={{ once: true }}
           >
             <span className="text-[#1a1a1a] uppercase">
-              Save The Date
+              RESERVA LA FECHA
             </span>
           </motion.h2>
           
@@ -293,9 +293,9 @@ export default function Countdown() {
                         <span className="font-playfair text-[clamp(7rem,12vw,8rem)] leading-none text-[#1a1a1a] font-thin">
                           {String(timeLeft.days).padStart(2, '0')}
                         </span>
-                        <span className="absolute -top-2 -right-6 text-xs tracking-[0.2em] uppercase text-[#d4af37]">
-                          days
-                        </span>
+                       <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-lg md:text-xl tracking-[0.3em] uppercase text-[#d4af37]">
+                         Días
+                       </span>
                       </motion.div>
                     </AnimatePresence>
                   </motion.div>
@@ -306,9 +306,9 @@ export default function Countdown() {
                   {/* Hours, Minutes, Seconds - Smaller */}
                   <div className="flex items-center gap-3 lg:gap-4">
                     {[
-                      { value: timeLeft.hours, label: 'hours' },
-                      { value: timeLeft.minutes, label: 'minutes' },
-                      { value: timeLeft.seconds, label: 'seconds' }
+                      { value: timeLeft.hours, label: 'HORAS' },
+                      { value: timeLeft.minutes, label: 'MINUTOS' },
+                      { value: timeLeft.seconds, label: 'SEGUNDOS' }
                     ].map((unit, index) => (
                       <React.Fragment key={unit.label}>
                         {index > 0 && (
@@ -473,7 +473,7 @@ export default function Countdown() {
             transition={{ duration: 1, delay: 0.8 }}
             viewport={{ once: true }}
           >
-            "Two hearts, one love, forever united"
+            "La historia de nuestro amor ha sido un viaje maravilloso, lleno de momentos alegres, divertidos e inolvidables. Ahora, queremos invitarte a celebrar el inicio de un nuevo capítulo como esposos."
           </motion.p>
         </motion.div>
       </div>

@@ -1,13 +1,13 @@
-// Wedding Configuration Settings
-// Edit this file to customize all wedding details
+// Configuración de la Boda
+// Edita este archivo para personalizar todos los detalles
 
 const settings = {
-  // Theme Configuration
+  // Configuración del tema
   theme: {
     colors: {
-      primary: '#d4af37', // Gold
-      secondary: '#ff6b6b', // Rose
-      accent: '#4a90e2', // Blue
+      primary: '#d4af37',
+      secondary: '#ff6b6b',
+      accent: '#4a90e2',
       dark: '#1a1a1a',
       darker: '#0a0a0a',
       light: '#f5f5f5',
@@ -34,255 +34,226 @@ const settings = {
     }
   },
 
-  // Couple Information
+  // Información de la pareja
   couple: {
     bride: {
-      name: "Patinya",
-      fullName: "Patinya Surname",
-      email: "patinya@wedding.com",
-      phone: "+66 123 456 789",
-      instagram: "@patinya",
-      parents: "Mr. & Mrs. Surname"
+      name: "Cecy",
+      fullName: "Cecy Salinas",
+      email: "cecy@email.com",
+      phone: " 712 173 5707",
+      instagram: "@cecy",
+      parents: "Felipe Salinas González & Ma. Guadalupe González Crescencio"
     },
     groom: {
-      name: "Dar",
-      fullName: "Dar Surname",
-      email: "dar@wedding.com",
-      phone: "+66 987 654 321",
-      instagram: "@dar",
-      parents: "Mr. & Mrs. Surname"
+      name: "Iván",
+      fullName: "Iván Solís",
+      email: "ivan@email.com",
+      phone: "7221111111",
+      instagram: "@ivan",
+      parents: "Tomás Solís Cruz & María Luisa Cruz Gabriel"
     },
-    hashtag: "#PatinyaAndDar2026",
-    email: "hello@patinyaanddar.com"
+    hashtag: "#IvanYCecy2026",
+    email: "boda@ivanycecy.com"
   },
 
-  // Wedding Date & Time
+  // Fecha y hora
   wedding: {
-    date: "2026-03-07", // Format: YYYY-MM-DD
-    displayDate: "March 07, 2026",
-    shortDate: "03.07.26",
-    day: "Saturday",
+    date: "2026-05-02",
+    displayDate: "02 de Mayo 2026",
+    shortDate: "02.05.26",
+    day: "Sábado",
     ceremony: {
-      time: "17:30", // 24-hour format
-      displayTime: "5:30 PM",
-      duration: "1 hour"
+      time: "15:00",
+      displayTime: "1:00 PM",
+      duration: "1 hora"
     },
     cocktailHour: {
-      time: "18:30",
-      displayTime: "6:30 PM"
+      time: "14:30",
+      displayTime: "2:30 PM"
     },
     reception: {
-      time: "19:00",
-      displayTime: "7:00 PM",
-      endTime: "00:00",
-      displayEndTime: "Midnight"
+      time: "15:30",
+      displayTime: "3:00 PM",
+      endTime: "22:00",
+      displayEndTime: "10:00 PM"
     }
   },
 
-  // Venue Information
+  // Lugar del evento
   venue: {
-    name: "The Botanical House Bangkok",
-    ceremonyLocation: "Garden Chapel",
-    receptionLocation: "Grand Ballroom",
-    cocktailLocation: "Garden Terrace",
+    name: "Parroquia de Santo Domingo de Guzmán",
+    ceremonyLocation: "Parroquia de Santo Domingo de Guzmán",
+    receptionLocation: "Salón Marty",
+    cocktailLocation: "Área de recepción",
     address: {
-      full: "The Botanical House Bangkok, Rama IX Rd, Suanluang, Prawet, Bangkok 10250, Thailand",
-      street: "Rama IX Rd",
-      district: "Suanluang, Prawet",
-      city: "Bangkok",
-      postalCode: "10250",
-      country: "Thailand"
+      full: "",
+      street: "Avenida  Santo Domingo de Guzmán Manzana 033",
+      district: "Santo Domingo de Guzmán",
+      city: "Ixtlahuaca",
+      postalCode: "50773",
+      country: "México"
     },
     coordinates: {
-      lat: 13.7422323,
-      lng: 100.5754059
+      lat: 19.292,
+      lng: -99.655
     },
-    googleMapsUrl: "https://maps.google.com/?q=13.7422323,100.5754059",
-    shareUrl: "https://share.google/fZbzYMuySwltxPJZJ",
-    parking: "Valet Parking Available",
+    googleMapsUrl: "https://maps.app.goo.gl/XDj8kVvprrqwpe556",
+    shareUrl: "https://maps.app.goo.gl/XDj8kVvprrqwpe556",
+    parking: "",
     accommodation: [
       {
-        name: "The Botanical Hotel",
-        distance: "On-site",
-        bookingCode: "PATDAR2026"
-      },
-      {
-        name: "Bangkok Marriott",
-        distance: "5 minutes",
-        bookingCode: "WEDDING2026"
+        name: "Hotel Ejemplo",
+        distance: "5 minutos",
+        bookingCode: "BODA2026"
       }
     ]
   },
 
-  // Event Details
+  // Detalles del evento
   events: {
     ceremony: {
-      title: "The Ceremony",
-      description: "Join us as we exchange vows in the beautiful Garden Chapel",
-      dressCode: "Modern Formal",
-      colors: ["Black", "White", "Gold"],
-      notes: "Outdoor ceremony - sun hats welcome"
+      title: "Ceremonia Religiosa",
+      description: "Acompáñanos a celebrar nuestra unión en la parroquia",
+      dressCode: "Cómo tú te sientas agusto..",
+      colors: ["Prioriza comodidad para disfrutar cada momento."],
+      notes: "Cómo tú te sientas a gusto"
     },
     reception: {
-      title: "The Reception",
-      description: "Dinner, dancing, and celebration under the stars",
-      dressCode: "Cocktail Attire",
-      features: ["Open Bar", "Live Band", "DJ", "Photo Booth"],
-      menu: "Thai & International Cuisine"
+      title: "Recepción",
+      description: "Celebremos juntos este momento tan especial",
+      dressCode: "Libre",
+      features: ["Música", "Comida", "Baile"],
+      menu: "Comida mexicana"
     }
   },
 
-  // Love Story Timeline
+  receptionVenue: {
+  name: "Salón Marty",
+  image: "/Salon/SalonMarti.jpg",
+  address: {
+    street: "Avenida Benito Juárez Manzana 4",
+    city: "Santo Domingo de Guzmán",
+    country: "Ixtlahuaca",
+    postalCode: "50773",
+    country: "Ixtlahuaca, México"
+  },
+    googleMapsUrl2: "https://maps.app.goo.gl/JW5ft3fgRsUU1Rgc8",
+    shareUrl: "https://maps.app.goo.gl/JW5ft3fgRsUU1Rgc8",
+    parking: "",
+},
+
+  // Historia de amor
   loveStory: [
     {
-      date: "May 2021",
-      title: "First Meeting",
-      description: "Coffee shop magic in Bangkok",
+      date: "2022",
+      title: "Nuestro inicio",
+      description: "Nos conocimos en el momento menos esperado.",
       icon: "Heart"
     },
     {
-      date: "Dec 2021",
-      title: "First Adventure",
-      description: "Exploring Chiang Mai together",
+      date: "2023",
+      title: "Nuestro camino",
+      description: "Crecimos juntos y aprendimos lo que es el amor verdadero.",
       icon: "MapPin"
     },
     {
-      date: "Feb 2024",
-      title: "The Proposal",
-      description: "Under the stars at Koh Samui",
+      date: "2025",
+      title: "El compromiso",
+      description: "Decidimos compartir nuestras vidas para siempre.",
       icon: "Sparkles"
     },
     {
-      date: "March 2026",
-      title: "Our Wedding",
-      description: "Beginning our forever journey",
+      date: "2026",
+      title: "Nos casamos",
+      description: "El inicio de nuestra nueva vida juntos.",
       icon: "Calendar"
     }
   ],
 
-  // Gallery Images
+  // Galería
   gallery: [
-    {
-      url: "/our-moments/no-image.jpg",
-      alt: "Romantic couple photo",
-      caption: "Our engagement shoot"
-    },
-    {
-      url: "/our-moments/no-image.jpg",
-      alt: "Beautiful wedding rings",
-      caption: "The rings"
-    },
-    {
-      url: "/our-moments/no-image.jpg",
-      alt: "Our Wedding Rings",
-      caption: "Our Wedding Rings"
-    },
-    {
-      url: "/our-moments/no-image.jpg",
-      alt: "Wedding bouquet",
-      caption: "Floral details"
-    },
-    {
-      url: "/our-moments/no-image.jpg",
-      alt: "Couple walking together",
-      caption: "Adventure awaits"
-    },
-    {
-      url: "/our-moments/no-image.jpg",
-      alt: "Wedding celebration",
-      caption: "Celebration time"
-    }
+    { url: "/our-moments/1.jpeg", alt: "Nosotros", caption: "Nuestro amor" },
+    { url: "/our-moments/2.jpeg", alt: "Momentos", caption: "Recuerdos" },
+    { url: "/our-moments/3.jpeg", alt: "Anillos", caption: "Compromiso" },
+    { url: "/our-moments/4.jpeg", alt: "Detalles", caption: "Detalles" },
+    { url: "/our-moments/5.jpeg", alt: "Juntos", caption: "Nuestro camino" },
+    { url: "/our-moments/6.jpeg", alt: "Celebración", caption: "Celebración" }
   ],
 
-  // Venue Gallery Images
+  // Galería del lugar
   venueGallery: {
-    heroImage: "/botanical-house-bkk/wide_bh.png",
+    heroImage: "/Iglesia/Iglesia.jpg",
     images: [
-      {
-        url: "/botanical-house-bkk/5.jpg",
-        alt: "The Botanical House Bangkok - Garden View",
-        caption: "Beautiful garden entrance"
-      },
-      {
-        url: "/botanical-house-bkk/3.jpg",
-        alt: "The Botanical House Bangkok - Ceremony Space",
-        caption: "Garden chapel area"
-      },
-      {
-        url: "/botanical-house-bkk/4.jpg",
-        alt: "The Botanical House Bangkok - Reception Setup",
-        caption: "Evening reception setting"
-      }
+      { url: "/Iglesia/Iglesia.jpg", alt: "Lugar", caption: "Iglesia" },
+      { url: "/Salon/SalonMarti.jpg", alt: "Salón", caption: "Salon" },
     ]
   },
 
-  // Social Media
+   venueigle: {
+    heroImage: "/Iglesia/Iglesia.jpg",
+    images: [
+      { url: "/Iglesia/Iglesia.jpg", alt: "Lugar", caption: "Iglesia" }
+    ]
+  },
+
+  // Redes sociales
   social: {
     instagram: {
-      bride: "@patinya",
-      groom: "@dar",
-      wedding: "@patinyaanddar2026",
-      hashtag: "#PatinyaAndDar2026"
+      bride: "@cecy",
+      groom: "@ivan",
+      wedding: "@boda2026",
+      hashtag: "#IvanYCecy2026"
     },
     facebook: {
-      eventPage: "https://facebook.com/events/patinyaanddar2026"
+      eventPage: "https://facebook.com"
     }
   },
 
-  // RSVP Settings
+  // RSVP
   rsvp: {
-    deadline: "2026-02-01",
-    displayDeadline: "February 1st, 2026",
+    deadline: "2026-04-20",
+    displayDeadline: "20 de Abril 2026",
     maxGuests: 5,
     allowPlusOne: true,
-    collectDietaryInfo: true,
-    collectSongRequests: true,
-    emailNotification: "rsvp@patinyaanddar.com"
+    collectDietaryInfo: false,
+    collectSongRequests: false,
+    emailNotification: "rsvp@boda.com"
   },
 
-  // Registry Information
+  // Regalos
   registry: {
     enabled: true,
-    message: "Your presence is our present, but if you wish to contribute...",
+    message: "Su presencia es nuestro mejor regalo.",
     links: [
-      {
-        name: "Honeymoon Fund",
-        url: "https://registry.com/honeymoon",
-        icon: "Plane"
-      },
-      {
-        name: "Home Fund",
-        url: "https://registry.com/home",
-        icon: "Home"
-      }
+      { name: "Mesa de regalos", url: "https://amazon.com", icon: "Gift" }
     ]
   },
 
-  // Contact Information
+  // Contacto
   contact: {
     weddingPlanner: {
-      name: "Bangkok Wedding Planners",
-      phone: "+66 555 123 456",
-      email: "planner@bangkokweddings.com"
+      name: "Planner Eventos",
+      phone: "7222222222",
+      email: "planner@email.com"
     },
     photographer: {
-      name: "Moments Photography",
-      instagram: "@momentsphotobkk"
+      name: "Foto Studio",
+      instagram: "@foto"
     }
   },
 
-  // COVID/Health Guidelines (if needed)
+  // Reglas
   guidelines: {
     enabled: false,
-    message: "We're following all local health guidelines for your safety.",
+    message: "Evento seguro",
     requirements: []
   },
 
-  // Metadata for SEO
+  // Metadata
   metadata: {
-    title: "Patinya & Dar | March 07, 2026",
-    description: "Join us for our wedding celebration at The Botanical House Bangkok",
-    keywords: "wedding, bangkok, patinya, dar, 2026, botanical house",
+    title: "Iván & Cecy | 02 de Mayo 2026",
+    description: "Te invitamos a nuestra boda.",
+    keywords: "boda, ivan, cecy",
     ogImage: "/og-image.jpg"
   }
 };
