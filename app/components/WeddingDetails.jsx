@@ -126,7 +126,7 @@ export default function WeddingDetails() {
         title: events.reception.title,
         time: "",
         location: "Salón Marti",
-        duration: `Una noche de celebración y diversión`
+        duration: `Una día de celebración y diversión`
       }
     },
     {
@@ -388,28 +388,7 @@ export default function WeddingDetails() {
                     </div>
                   </div>
 
-                  <div className="relative">
-                    <motion.div
-                      className="relative h-[400px] rounded-2xl overflow-hidden"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-black/60" />
-                      <img
-                        src={venue.imageUrl || "/Iglesia/Iglesia.jpg"}
-                        alt={venue.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute bottom-6 left-6 z-20">
-                        <p className="text-[#1a1a1a]/80 text-sm tracking-wider uppercase">
-                          {wedding.displayDate}
-                        </p>
-                        <p className="text-[#d4af37] text-lg">
-                          {wedding.ceremony.displayTime}
-                        </p>
-                      </div>
-                    </motion.div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -487,28 +466,7 @@ export default function WeddingDetails() {
                   </div>
                 </div>
 
-                <div className="relative">
-                  <motion.div
-                    className="relative h-[400px] rounded-2xl overflow-hidden"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-black/60" />
-                    <img
-                      src={venue.imageUrl || "/Salon/SalonMarti.jpg"}
-                      alt={venue.name}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute bottom-6 left-6 z-20">
-                      <p className="text-[#1a1a1a]/80 text-sm tracking-wider uppercase">
-                        {wedding.displayDate}
-                      </p>
-                      <p className="text-[#d4af37] text-lg">
-
-                      </p>
-                    </div>
-                  </motion.div>
-                </div>
+             
               </div>
             </div>
           </div>

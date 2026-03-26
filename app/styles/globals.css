@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 :root {
   --primary: #1a1a1a;
   --accent: #ff6b6b;

@@ -3,19 +3,19 @@ import settings from './config/settings'
 import { Inter, Playfair_Display, Dancing_Script } from 'next/font/google'
 
 // Configure fonts with Next.js font optimization
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 })
 
-const playfair = Playfair_Display({ 
+const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
   display: 'swap',
 })
 
-const dancing = Dancing_Script({ 
+const dancing = Dancing_Script({
   subsets: ['latin'],
   variable: '--font-dancing',
   display: 'swap',
@@ -42,7 +42,7 @@ export const metadata = {
   authors: [{ name: `${settings.couple.bride.name} & ${settings.couple.groom.name}` }],
   creator: `${settings.couple.bride.name} & ${settings.couple.groom.name}`,
   publisher: `${settings.couple.bride.name} & ${settings.couple.groom.name}`,
-  
+
   // Open Graph metadata for social media sharing
   openGraph: {
     title: `${settings.couple.bride.name} & ${settings.couple.groom.name} are Getting Married!`,
@@ -61,7 +61,7 @@ export const metadata = {
     locale: 'en_US',
     type: 'website',
   },
-  
+
   // Twitter Card metadata
   twitter: {
     card: 'summary_large_image',
@@ -70,13 +70,13 @@ export const metadata = {
     images: ['/og-image.jpg'],
     creator: settings.social.instagram.wedding || settings.social.instagram.bride,
   },
-  
+
   // Additional metadata
   metadataBase: metadataBaseUrl,
   alternates: {
     canonical: '/',
   },
-  
+
   // Robots and indexing
   robots: {
     index: true,
@@ -91,24 +91,24 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  
+
   // Verification (add your verification codes if needed)
   verification: {
     google: '', // Add Google Search Console verification
     yandex: '',
     yahoo: '',
   },
-  
+
   // Icons
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
     apple: '/favicon.svg',
   },
-  
+
   // Manifest for PWA
   manifest: '/manifest.json',
-  
+
   // Format detection
   formatDetection: {
     email: false,
@@ -130,7 +130,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${dancing.variable}`}>
       <head>
         <title>{`${settings.couple.bride.name} & ${settings.couple.groom.name} | Wedding - ${settings.wedding.displayDate}`}</title>
-        
+
         {/* Open Graph meta tags for better WhatsApp/social media support */}
         <meta property="og:title" content={`${settings.couple.bride.name} & ${settings.couple.groom.name} are Getting Married!`} />
         <meta property="og:description" content={`Save the date! Join us for our wedding celebration on ${settings.wedding.displayDate}`} />
@@ -140,13 +140,13 @@ export default function RootLayout({ children }) {
         <meta property="og:image:type" content="image/png" />
         <meta property="og:url" content={siteUrl} />
         <meta property="og:type" content="website" />
-        
+
         {/* Twitter Card meta tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${settings.couple.bride.name} & ${settings.couple.groom.name} - ${settings.wedding.displayDate}`} />
         <meta name="twitter:description" content={`Join us for our wedding celebration at ${settings.venue.name}`} />
         <meta name="twitter:image" content="/og-image.jpg" />
-        
+
         {/* Additional structured data for rich snippets */}
         <script
           type="application/ld+json"
@@ -189,7 +189,13 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <div className="w-full min-h-screen bg-black flex justify-center">
+          <div className="w-full max-w-[480px] bg-[#f5efe6]">
+            {children}
+          </div>
+        </div>
+      </body>
     </html>
   )
 }

@@ -279,7 +279,7 @@ export default function Hero() {
               <div className="flex items-center justify-center gap-3">
                 <div className="w-8 h-[0.5px] bg-[#1a1a1a50]" />
                 <p className="text-xs tracking-[2px] uppercase text-[#1a1a1a]">
-                  {settings.venue.name}
+                  Acompáñanos a celebrar el inicio de nuestra historia juntos.
                 </p>
                 <div className="w-8 h-[0.5px] bg-[#8a6d1a50]" />
               </div>
