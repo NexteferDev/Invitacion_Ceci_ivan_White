@@ -61,31 +61,7 @@ export default function Footer() {
                     </p>
 
                     {/* Social Links */}
-                    <div className="flex justify-center gap-6 mb-16">
-                        {socialLinks.map((link, index) => (
-                            <motion.a
-                                key={link.name}
-                                href={link.href}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                viewport={{ once: true }}
-                                whileHover={{ 
-                                    scale: 1.1,
-                                    rotate: 45,
-                                    backgroundColor: '#d4af37'
-                                }}
-                                className="w-14 h-14 border border-[#d4af37] flex items-center justify-center text-[#d4af37] hover:text-[#1a1a1a] transition-all duration-300"
-                            >
-                                <motion.span
-                                    whileHover={{ rotate: -45 }}
-                                    className="text-sm font-medium"
-                                >
-                                    {link.name}
-                                </motion.span>
-                            </motion.a>
-                        ))}
-                    </div>
+                    
 
                     {/* Divider */}
                     <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-8"></div>
