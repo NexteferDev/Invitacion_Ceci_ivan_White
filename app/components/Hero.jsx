@@ -276,12 +276,23 @@ export default function Hero() {
               NOS UNIMOS EN MATRIMONIO
             </p>
             {settings.venue?.name && (
-              <div className="flex items-center justify-center gap-3">
-                <div className="w-8 h-[0.5px] bg-[#1a1a1a50]" />
-                <p className="text-xs tracking-[2px] uppercase text-[#1a1a1a]">
-                  Todo Tiene Su Tiempo Y Todo Lo Que Se Quiere Bajo El Cielo Tiene Su Hora.
+              <div className="flex flex-col items-center justify-center gap-2">
+
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-[0.5px] bg-[#1a1a1a50]" />
+
+                  <p className="text-xs tracking-[0.3em] uppercase text-[#1a1a1a] text-center">
+                    Todo Tiene Su Tiempo Y Todo Lo Que Se Quiere Bajo El Cielo Tiene Su Hora.
+                  </p>
+
+                  <div className="w-8 h-[0.5px] bg-[#8a6d1a50]" />
+                </div>
+
+                {/* ESTE BAJA */}
+                <p className="text-[10px] tracking-[0.4em] uppercase text-[#8a6d1a]/80 mt-2">
+                  ECLESIASTÉS 3:1
                 </p>
-                <div className="w-8 h-[0.5px] bg-[#8a6d1a50]" />
+
               </div>
             )}
           </motion.div>

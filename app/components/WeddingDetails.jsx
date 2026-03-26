@@ -304,7 +304,7 @@ export default function WeddingDetails() {
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/50 to-[#0a0a0a]/80"></div>
 
               <motion.div
-                className="absolute inset-0 flex items-center justify-center text-center z-10"
+                className="absolute inset-0 flex items-end justify-center text-center z-10"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
@@ -312,7 +312,7 @@ export default function WeddingDetails() {
               >
                 <div>
                   <motion.h3
-                    className="drop-shadow-[2px_2px_4px_black] font-playfair text-[clamp(3rem,7vw,5rem)] font-thin tracking-[0.02em] leading-tight"
+                    className="drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] font-playfair text-[clamp(1rem,2.5vw,1.6rem)] font-thin tracking-[0.02em] leading-tight"
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.5 }}
@@ -323,7 +323,7 @@ export default function WeddingDetails() {
                     </span>
                   </motion.h3>
                   <motion.p
-                    className="text-white/80 text-xl mt-4 max-w-2xl mx-auto px-6"
+                    className="text-white/70 text-xs mt-2 tracking-[0.3em] uppercase"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 1, delay: 0.7 }}
@@ -366,7 +366,7 @@ export default function WeddingDetails() {
                         href={venue.googleMapsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 border border-[#d4af37]/20 text-[#d4af37] hover:bg-[#d4af37] hover:text-[#0a0a0a] transition-all duration-300 rounded-full"
+                        className="inline-flex items-center gap-2 px-4 py-2 text-xs tracking-[0.3em] uppercase border border-[#d4af37]/30 text-[#d4af37] rounded-full backdrop-blur-sm bg-white/10 hover:bg-[#d4af37] hover:text-[#0a0a0a] transition-all duration-300"
                         whileHover={performance.animationLevel === 'full' ? { scale: 1.05 } : {}}
                         whileTap={performance.animationLevel === 'full' ? { scale: 0.95 } : {}}
                       >
@@ -388,7 +388,7 @@ export default function WeddingDetails() {
                     </div>
                   </div>
 
-                  
+
                 </div>
               </div>
             </div>
@@ -408,18 +408,24 @@ export default function WeddingDetails() {
                 fill
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/50 to-[#0a0a0a]/80"></div>
 
-              <div className="absolute inset-0 flex items-center justify-center text-center z-10">
-                <div>
-                  <h3 className="font-playfair text-[clamp(3rem,7vw,5rem)] font-thin">
+              {/* Overlay elegante */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+
+              {/* Texto abajo */}
+              <div className="absolute bottom-0 left-0 w-full flex justify-center text-center pb-10 md:pb-14 z-10">
+                <div className="max-w-xl mx-auto">
+
+                  <h3 className="drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] font-playfair text-[clamp(1rem,2.5vw,1.6rem)] font-light tracking-[0.08em]">
                     <span className="bg-gradient-to-r from-[#faf8f3] via-[#d4af37] to-[#faf8f3] bg-clip-text text-transparent">
                       {receptionVenue.name.toUpperCase()}
                     </span>
                   </h3>
-                  <p className="text-white/80 text-xl mt-4">
+
+                  <p className="text-white/70 text-xs mt-2 tracking-[0.3em] uppercase">
                     Recepción
                   </p>
+
                 </div>
               </div>
             </div>
@@ -440,7 +446,7 @@ export default function WeddingDetails() {
                     viewport={{ once: true }}
                   >
                     <span className="text-sm font-medium tracking-wider text-[#d4af37]/80 uppercase">
-                      Dirección completa
+                      Dirección
                     </span>
                   </motion.div>
 
@@ -466,7 +472,7 @@ export default function WeddingDetails() {
                   </div>
                 </div>
 
-             
+
               </div>
             </div>
           </div>
