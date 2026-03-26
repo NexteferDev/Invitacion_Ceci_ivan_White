@@ -124,7 +124,7 @@ export default function WeddingDetails() {
       icon: Music,
       content: {
         title: events.reception.title,
-        time: wedding.reception.displayTime,
+        time: "",
         location: "Salón Marti",
         duration: `Una noche de celebración y diversión`
       }
@@ -572,8 +572,12 @@ export default function WeddingDetails() {
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-center justify-center gap-4">
-                      <Clock className="w-5 h-5 text-[#d4af37]/60" />
-                      <span className="text-xl text-[#1a1a1a]/80">{detailTabs[activeTab].content.time}</span>
+                      {activeTab !== 1 && (
+                        <Clock className="w-5 h-5 text-[#d4af37]/60" />
+                      )}
+                      <span className="text-xl text-[#1a1a1a]/80">
+                        {detailTabs[activeTab].content.time}
+                      </span>
                     </div>
                     <div className="flex items-center justify-center gap-4">
                       <MapPin className="w-5 h-5 text-[#d4af37]/60" />
