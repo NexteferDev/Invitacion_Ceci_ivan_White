@@ -5,12 +5,17 @@ import { motion } from 'framer-motion'
 import { db } from '../lib/firebase.js'
 import { collection, addDoc } from 'firebase/firestore'
 
+import localFont from 'next/font/local'
+
+const miFuente = localFont({
+  src: '../fonts/mi-fuente.otf'
+});
+
 export default function RSVP() {
 
     const [form, setForm] = useState({
         nombre: '',
         asistira: 'si',
-        asistentes: 1,
         mensaje: ''
     })
 
@@ -21,7 +26,7 @@ export default function RSVP() {
         e.preventDefault()
 
         if (!form.nombre) {
-            alert("Por favor escribe tu nombre")
+            alert("Por favor escribe el nombre de la familia")
             return
         }
 
@@ -38,7 +43,6 @@ export default function RSVP() {
             setForm({
                 nombre: '',
                 asistira: 'si',
-                asistentes: 1,
                 mensaje: ''
             })
 
@@ -51,7 +55,7 @@ export default function RSVP() {
     }
 
     return (
-        <section id="rspv" className="min-h-screen flex items-center justify-center py-20 bg-[#1a1a1a] relative overflow-hidden">
+        <section id="rspv" className="min-h-screen flex items-center justify-center py-20 bg-[#f3f1ec] relative overflow-hidden">
 
             <div className="max-w-2xl w-full mx-auto px-6 relative z-10">
 
@@ -61,20 +65,18 @@ export default function RSVP() {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center mb-12"
                 >
-                    <h2 className="font-playfair text-[clamp(3rem,8vw,5rem)] font-thin mb-4">
-                        <span className="bg-gradient-to-r from-[#faf8f3] via-[#d4af37] to-[#faf8f3] bg-clip-text text-transparent">
-                            CONFIRMA TU ASISTENCIA
-                        </span>
+                    <h2 className={`${miFuente.className} text-[clamp(4rem,10vw,7rem)] text-[#1a1a1a] leading-[1.3] px-6`}>
+                        Confirma tu asistencia
                     </h2>
 
-                    <p className="text-[#faf8f3]/60 uppercase tracking-widest">
+                    <p className="text-[#1a1a1a]/60 uppercase tracking-widest">
                         Nos encantaría contar contigo
                     </p>
                 </motion.div>
 
                 {/* MENSAJE DE ÉXITO */}
                 {success && (
-                    <div className="mb-6 text-center text-[#d4af37]">
+                    <div className="mb-6 text-center text-[#c9a227]">
                         ✔ Confirmación enviada correctamente
                     </div>
                 )}
@@ -84,15 +86,15 @@ export default function RSVP() {
                     onSubmit={handleSubmit}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="space-y-6 bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10"
+                    className="space-y-6 bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-[#d4af37]/30 shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
                 >
 
                     {/* Nombre */}
                     <input
                         type="text"
-                        placeholder="NOMBRE"
+                        placeholder="NOMBRE DE LA FAMILIA"
                         value={form.nombre}
-                        className="w-full p-4 bg-white/10 rounded-xl text-white outline-none"
+                        className="w-full p-4 bg-white/70 rounded-xl text-[#1a1a1a] outline-none border border-black/10 focus:border-[#d4af37]/50 transition"
                         onChange={(e) => setForm({ ...form, nombre: e.target.value })}
                     />
 
@@ -102,10 +104,11 @@ export default function RSVP() {
                         <button
                             type="button"
                             onClick={() => setForm({ ...form, asistira: 'si' })}
-                            className={`flex-1 p-4 rounded-xl border transition ${form.asistira === 'si'
-                                ? 'bg-[#d4af37] text-black'
-                                : 'bg-white/10 text-white border-white/20'
-                                }`}
+                            className={`flex-1 p-4 rounded-xl border transition ${
+                                form.asistira === 'si'
+                                    ? 'bg-[#d4af37] text-black border-[#d4af37]'
+                                    : 'bg-white/70 text-[#1a1a1a] border-[#d4af37]/30 hover:border-[#d4af37]/60'
+                            }`}
                         >
                             Sí asistiré
                         </button>
@@ -113,55 +116,17 @@ export default function RSVP() {
                         <button
                             type="button"
                             onClick={() => setForm({ ...form, asistira: 'no' })}
-                            className={`flex-1 p-4 rounded-xl border transition ${form.asistira === 'no'
-                                ? 'bg-[#d4af37] text-black'
-                                : 'bg-white/10 text-white border-white/20'
-                                }`}
+                            className={`flex-1 p-4 rounded-xl border transition ${
+                                form.asistira === 'no'
+                                    ? 'bg-[#d4af37] text-black border-[#d4af37]'
+                                    : 'bg-white/70 text-[#1a1a1a] border-[#d4af37]/30 hover:border-[#d4af37]/60'
+                            }`}
                         >
                             No asistiré
                         </button>
 
                     </div>
 
-                    <div className="text-center">
-                        <p className="text-sm text-[#d4af37]/80 mb-4 tracking-wider uppercase">
-                            ¿Cuántas personas asistirán en total? (Contándote a ti)
-                        </p>
-
-                        <div className="flex items-center justify-center gap-6">
-
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    setForm({
-                                        ...form,
-                                        asistentes: Math.max(1, form.asistentes - 1)
-                                    })
-                                }
-                                className="w-10 h-10 rounded-full bg-white/10 text-white text-xl"
-                            >
-                                -
-                            </button>
-
-                            <span className="text-3xl font-playfair">
-                                {form.asistentes}
-                            </span>
-
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    setForm({
-                                        ...form,
-                                        asistentes: form.asistentes + 1
-                                    })
-                                }
-                                className="w-10 h-10 rounded-full bg-white/10 text-white text-xl"
-                            >
-                                +
-                            </button>
-
-                        </div>
-                    </div>
                     {/* BOTÓN */}
                     <button
                         disabled={loading}

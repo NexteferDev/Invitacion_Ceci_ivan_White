@@ -45,7 +45,7 @@ const settings = {
       parents: "Felipe Salinas González & Ma. Guadalupe González Crescencio"
     },
     groom: {
-      name: "Iván",
+      name: "Iván ",
       fullName: "Iván Solís",
       email: "ivan@email.com",
       phone: "7221111111",
@@ -87,7 +87,7 @@ const settings = {
     cocktailLocation: "Área de recepción",
     address: {
       full: "",
-      street: "Avenida  Santo Domingo de Guzmán Manzana 033",
+      street: "Avenida  Santo Domingo de Guzmán",
       district: "Santo Domingo de Guzmán",
       city: "Ixtlahuaca",
       postalCode: "50773",
@@ -131,7 +131,7 @@ const settings = {
   name: "Salón Marty",
   image: "/Salon/SalonMarti.jpg",
   address: {
-    street: "Avenida Benito Juárez Manzana 4",
+    street: "Avenida Benito Juárez",
     city: "Santo Domingo de Guzmán",
     country: "Ixtlahuaca",
     postalCode: "50773",

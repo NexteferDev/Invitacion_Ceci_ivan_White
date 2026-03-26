@@ -6,6 +6,12 @@ import { Clock, MapPin, Calendar, Music, Utensils, Camera, Heart, Users, Sparkle
 import Image from 'next/image';
 import settings from '../config/settings';
 import Lightbox from './shared/Lightbox';
+import localFont from 'next/font/local'
+
+const miFuente = localFont({
+  src: '../fonts/mi-fuente.otf'
+});
+
 
 export default function WeddingDetails() {
   const { wedding, venue, events, social, venueGallery, receptionVenue } = settings;
@@ -102,24 +108,24 @@ export default function WeddingDetails() {
   ];
 
   // Detail tabs
- const detailTabs = [
+  const detailTabs = [
     {
-      title: "La Ceremonia",
+      title: "Ceremonia Religiosa",
       icon: Heart,
       content: {
         title: events.ceremony.title,
         time: wedding.ceremony.displayTime,
         location: venue.ceremonyLocation,
-        duration: "Celebración Eucarística"
+        duration: "Celebración Religiosa"
       }
     },
     {
-      title: "La Recepción",
+      title: "Recepción",
       icon: Music,
       content: {
         title: events.reception.title,
         time: wedding.reception.displayTime,
-        location: "Salón de Baile",
+        location: "Salón Marti",
         duration: `Una noche de celebración y diversión`
       }
     },
@@ -137,14 +143,17 @@ export default function WeddingDetails() {
 
   return (
     <>
-      <section id="wedding-details" className="min-h-screen py-20 bg-[#0a0a0a] relative overflow-hidden">
+      <section id="wedding-details" className="min-h-screen py-20 relative overflow-hidden">
         {/* Elegant Gradient Background - Same as Hero */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#f8f6f2] via-[#f3f1ec] to-[#ece8df]" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#d4af3720] via-transparent to-[#d4af3705]" />
           <div className="absolute inset-0 bg-gradient-to-tr from-[#d4af3715] via-transparent to-[#ff6b6b10]" />
           <div className="absolute inset-0 bg-gradient-to-bl from-[#87a87810] via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(212,175,55,0.08)_0%,_transparent_40%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(135,168,120,0.06)_0%,_transparent_40%)]" />
+          <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-[#d4af3708] to-[#faf8f305]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(212,175,55,0.1)_0%,_transparent_40%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(255,107,107,0.08)_0%,_transparent_40%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(135,168,120,0.05)_0%,_transparent_60%)]" />
         </div>
 
         {/* Floating Particles - reduced based on performance */}
@@ -179,10 +188,10 @@ export default function WeddingDetails() {
           transition={{ duration: 0.8 }}
           className="relative z-10"
         >
-          <div className="space-y-12 text-center text-white">
+          <div className="space-y-12 text-center text-[#1a1a1a]">
 
             {/* TÍTULO */}
-            <p className="text-sm tracking-[0.3em] uppercase text-[#d4af37]/80">
+            <p className={`${miFuente.className} text-[clamp(4rem,5vw,7rem)] text-[#1a1a1a]`}>
               Con la bendición de nuestros padres
             </p>
 
@@ -213,7 +222,7 @@ export default function WeddingDetails() {
               <div className="h-[1px] w-32 mx-auto bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mb-6" />
 
               <p className="font-playfair text-3xl md:text-4xl tracking-wide">
-                Tomás Solís Cruz
+                Tomas Solis López
               </p>
               <p className="font-playfair text-3xl md:text-4xl tracking-wide">
                 María Luisa Cruz Gabriel
@@ -264,12 +273,10 @@ export default function WeddingDetails() {
               viewport={{ once: true }}
             />
 
-            <h2 className="font-playfair text-[clamp(3.5rem,9vw,6rem)] font-thin tracking-[0.02em] mb-6">
-              <span className="bg-gradient-to-r from-[#faf8f3] via-[#d4af37] to-[#faf8f3] bg-clip-text text-transparent">
-                NUESTRO GRAN DÍA
-              </span>
+            <h2 className={`${miFuente.className} text-[clamp(4rem,10vw,7rem)] text-[#1a1a1a]`}>
+              Nuestro Viaje
             </h2>
-            <p className="text-lg font-light tracking-[0.2em] uppercase text-[#faf8f3]/40">
+            <p className="text-lg font-light tracking-[0.2em] uppercase text-[#1a1a1a]/50">
               Todo lo que necesitas saber
             </p>
           </motion.div>
@@ -322,7 +329,7 @@ export default function WeddingDetails() {
                     transition={{ duration: 1, delay: 0.7 }}
                     viewport={{ once: true }}
                   >
-                    El lugar de la boda
+                    Ceremonia Religiosa
                   </motion.p>
                 </div>
               </motion.div>
@@ -330,9 +337,8 @@ export default function WeddingDetails() {
 
 
             {/* Venue Info Card */}
-            <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10">
+            <div className="relative bg-white/80 backdrop-blur-md rounded-3xl overflow-hidden border border-[#d4af37]/40 shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
               <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-50" />
-
               <div className="relative p-12 lg:p-16">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                   <div>
@@ -344,11 +350,11 @@ export default function WeddingDetails() {
                       viewport={{ once: true }}
                     >
                       <span className="text-sm font-medium tracking-wider text-[#d4af37]/80 uppercase">
-                        Dirección completa
+                        Dirección
                       </span>
                     </motion.div>
 
-                    <div className="space-y-3 text-[#faf8f3]/70">
+                    <div className="space-y-3 text-[#1a1a1a]/70">
                       <p className="text-lg">{venue.address.street}</p>
                       <p className="text-lg">{venue.address.district}</p>
                       <p className="text-lg">{venue.address.city}, {venue.address.country}</p>
@@ -360,7 +366,7 @@ export default function WeddingDetails() {
                         href={venue.googleMapsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 border border-[#d4af37]/50 text-[#d4af37] hover:bg-[#d4af37] hover:text-[#0a0a0a] transition-all duration-300 rounded-full"
+                        className="inline-flex items-center gap-2 px-6 py-3 border border-[#d4af37]/20 text-[#d4af37] hover:bg-[#d4af37] hover:text-[#0a0a0a] transition-all duration-300 rounded-full"
                         whileHover={performance.animationLevel === 'full' ? { scale: 1.05 } : {}}
                         whileTap={performance.animationLevel === 'full' ? { scale: 0.95 } : {}}
                       >
@@ -372,7 +378,7 @@ export default function WeddingDetails() {
                           href={calendarUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-6 py-3 border border-[#d4af37]/50 text-[#d4af37] hover:bg-[#d4af37] hover:text-[#0a0a0a] transition-all duration-300 rounded-full"
+                          className="inline-flex items-center gap-2 px-6 py-3 border border-[#c9a227]/50 text-[#c9a227] hover:bg-[#c9a227] hover:text-[#0a0a0a] transition-all duration-300 rounded-full"
                           whileHover={performance.animationLevel === 'full' ? { scale: 1.05 } : {}}
                           whileTap={performance.animationLevel === 'full' ? { scale: 0.95 } : {}}
                         >
@@ -388,14 +394,14 @@ export default function WeddingDetails() {
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.5 }}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 to-transparent z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-black/60" />
                       <img
                         src={venue.imageUrl || "/Iglesia/Iglesia.jpg"}
                         alt={venue.name}
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute bottom-6 left-6 z-20">
-                        <p className="text-[#faf8f3]/80 text-sm tracking-wider uppercase">
+                        <p className="text-[#1a1a1a]/80 text-sm tracking-wider uppercase">
                           {wedding.displayDate}
                         </p>
                         <p className="text-[#d4af37] text-lg">
@@ -441,9 +447,9 @@ export default function WeddingDetails() {
           </motion.div>
 
           {/* Venue Info Card */}
-          <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10">
+          {/* Segundo Card */}
+          <div className="relative bg-white/80 backdrop-blur-md rounded-3xl overflow-hidden border border-[#d4af37]/40 shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
             <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-50" />
-
             <div className="relative p-12 lg:p-16">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
@@ -459,7 +465,7 @@ export default function WeddingDetails() {
                     </span>
                   </motion.div>
 
-                  <div className="space-y-3 text-[#faf8f3]/70">
+                  <div className="space-y-3 text-[#1a1a1a]/70">
                     <p className="text-lg">{receptionVenue.address.street}</p>
                     <p className="text-lg">{receptionVenue.address.district}</p>
                     <p className="text-lg">{receptionVenue.address.city}, {receptionVenue.address.country}</p>
@@ -487,18 +493,18 @@ export default function WeddingDetails() {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 to-transparent z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-black/60" />
                     <img
                       src={venue.imageUrl || "/Salon/SalonMarti.jpg"}
                       alt={venue.name}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute bottom-6 left-6 z-20">
-                      <p className="text-[#faf8f3]/80 text-sm tracking-wider uppercase">
+                      <p className="text-[#1a1a1a]/80 text-sm tracking-wider uppercase">
                         {wedding.displayDate}
                       </p>
                       <p className="text-[#d4af37] text-lg">
-                        3:00 PM En adelante
+
                       </p>
                     </div>
                   </motion.div>
@@ -515,47 +521,6 @@ export default function WeddingDetails() {
             viewport={{ once: true }}
             className="mb-20"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h3 className="font-playfair text-4xl font-thin text-[#faf8f3] mb-4">
-                Explorar el lugar
-              </h3>
-              <p className="text-lg text-[#faf8f3]/60">
-                Haz clic en cualquier imagen para verla en tamaño completo
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {venueGallery.images.map((image, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                  className="relative aspect-square cursor-pointer group overflow-hidden rounded-2xl"
-                  onClick={() => openLightbox(index)}
-                >
-                  <Image
-                    src={image.url}
-                    alt={image.alt}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <p className="text-white font-medium text-lg">{image.caption}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
 
 
           </motion.div>
@@ -577,8 +542,8 @@ export default function WeddingDetails() {
                     key={index}
                     onClick={() => setActiveTab(index)}
                     className={`flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 ${activeTab === index
-                        ? 'border-[#d4af37] bg-[#d4af37]/10 text-[#d4af37]'
-                        : 'border-white/10 text-[#faf8f3]/50 hover:border-[#d4af37]/50 hover:text-[#d4af37]/70'
+                      ? 'border-[#d4af37] bg-[#d4af37]/10 text-[#d4af37]'
+                      : 'border-[#d4af37]/30 text-[#1a1a1a]/60 hover:border-[#d4af37]/50 hover:text-[#d4af37]/70'
                       }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -601,22 +566,22 @@ export default function WeddingDetails() {
                 transition={{ duration: 0.5 }}
                 className="max-w-2xl mx-auto" // Reducido el ancho máximo para mejor centrado sin la columna de notas
               >
-                <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10 text-center">
-                  <h3 className="font-playfair text-4xl font-thin text-[#faf8f3] mb-8">
+                <div className="bg-white/80 backdrop-blur-md rounded-3xl border border-[#d4af37]/30 p-10 shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
+                  <h3 className="font-playfair text-4xl font-thin text-[#1a1a1a] mb-8">
                     {detailTabs[activeTab].content.title}
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-center justify-center gap-4">
                       <Clock className="w-5 h-5 text-[#d4af37]/60" />
-                      <span className="text-xl text-[#faf8f3]/80">{detailTabs[activeTab].content.time}</span>
+                      <span className="text-xl text-[#1a1a1a]/80">{detailTabs[activeTab].content.time}</span>
                     </div>
                     <div className="flex items-center justify-center gap-4">
                       <MapPin className="w-5 h-5 text-[#d4af37]/60" />
-                      <span className="text-xl text-[#faf8f3]/80">{detailTabs[activeTab].content.location}</span>
+                      <span className="text-xl text-[#1a1a1a]/80">{detailTabs[activeTab].content.location}</span>
                     </div>
                     <div className="flex items-center justify-center gap-4">
                       <Sparkles className="w-5 h-5 text-[#d4af37]/60" />
-                      <span className="text-xl text-[#faf8f3]/80">{detailTabs[activeTab].content.duration}</span>
+                      <span className="text-xl text-[#1a1a1a]/80">{detailTabs[activeTab].content.duration}</span>
                     </div>
                   </div>
                 </div>
@@ -634,8 +599,9 @@ export default function WeddingDetails() {
             viewport={{ once: true }}
             className="mt-24 text-center"
           >
-            <div className="inline-block bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <p className="text-sm tracking-wider text-[#faf8f3]/60 uppercase mb-2">
+
+            <div className="inline-block bg-white/80 border border-[#d4af37]/30 shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
+              <p className="text-sm tracking-wider text-[#1a1a1a]/60 uppercase mb-2">
                 Comparte tus momentos
               </p>
               <p className="font-playfair text-2xl text-[#d4af37]">

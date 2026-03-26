@@ -3,19 +3,42 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import settings from '../config/settings';
+import { Great_Vibes, Playfair_Display } from 'next/font/google'
+import localFont from 'next/font/local'
+
+
+// ================= FONTS =================
+const greatVibes = Great_Vibes({
+  subsets: ['latin'],
+  weight: '400'
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '600']
+})
+
+const miFuente = localFont({
+  src: '../fonts/mi-fuente.otf'
+});
+
+const miFuente2 = localFont({
+  src: '../fonts/mi-fuente2.ttf'
+});
 
 export default function Hero() {
+
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isClient, setIsClient] = useState(false);
   const controls = useAnimation();
 
   useEffect(() => {
     setIsClient(true);
-    
+
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-    
+
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
@@ -23,22 +46,22 @@ export default function Hero() {
   const scrollToNext = () => {
     const element = document.getElementById('countdown');
     element?.scrollIntoView({ behavior: 'smooth' });
-    
+
     window.dispatchEvent(new Event('playBackgroundMusic'));
   };
 
   return (
-    <div id="hero" className="h-screen relative flex items-start md:items-center justify-center overflow-hidden pt-20 md:pt-0">
+    <div id="hero" className="h-screen relative flex items-start md:items-center justify-center overflow-visible pt-20 md:pt-0">
       {/* Elegant Gradient Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#faf8f3] via-[#f3e5c8] to-[#e6d3a3]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f8f6f2] via-[#f3f1ec] to-[#ece8df]" />
         <div className="absolute inset-0 bg-gradient-to-tr from-[#d4af3720] via-transparent to-[#d4af3705]" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#d4af3715] via-transparent to-[#ff6b6b10]"/>
-        <div className="absolute inset-0 bg-gradient-to-bl from-[#87a87810] via-transparent to-transparent"/>
-        <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-[#d4af3708] to-[#faf8f305]"/>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(212,175,55,0.1)_0%,_transparent_40%)]"/>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(255,107,107,0.08)_0%,_transparent_40%)]"/>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(135,168,120,0.05)_0%,_transparent_60%)]"/>
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#d4af3715] via-transparent to-[#ff6b6b10]" />
+        <div className="absolute inset-0 bg-gradient-to-bl from-[#87a87810] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-[#d4af3708] to-[#faf8f305]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(212,175,55,0.1)_0%,_transparent_40%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(255,107,107,0.08)_0%,_transparent_40%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(135,168,120,0.05)_0%,_transparent_60%)]" />
       </div>
 
       {/* Animated Light Beams */}
@@ -72,30 +95,30 @@ export default function Hero() {
             transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
           />
         )}
-        
+
         {isClient && (
           <motion.div
             className="absolute top-[15%] right-[10%] w-32 h-32 will-change-transform"
-            animate={{ 
+            animate={{
               y: [0, -30, 0],
               x: [0, 20, 0],
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           >
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-[#d4af3720] to-transparent blur-xl"/>
+            <div className="w-full h-full rounded-full bg-gradient-to-br from-[#d4af3720] to-transparent blur-xl" />
           </motion.div>
         )}
-        
+
         {isClient && (
           <motion.div
             className="absolute bottom-[20%] left-[5%] w-40 h-40 will-change-transform"
-            animate={{ 
+            animate={{
               y: [0, 40, 0],
               x: [0, -30, 0],
             }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           >
-            <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#ff6b6b15] to-transparent blur-2xl"/>
+            <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#ff6b6b15] to-transparent blur-2xl" />
           </motion.div>
         )}
 
@@ -103,24 +126,24 @@ export default function Hero() {
           <>
             <motion.div
               className="absolute top-[60%] right-[25%] w-48 h-48 will-change-transform"
-              animate={{ 
+              animate={{
                 y: [0, 25, 0],
                 x: [0, -15, 0],
               }}
               transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
             >
-              <div className="w-full h-full rounded-full bg-gradient-to-tl from-[#87a87815] to-transparent blur-2xl"/>
+              <div className="w-full h-full rounded-full bg-gradient-to-tl from-[#87a87815] to-transparent blur-2xl" />
             </motion.div>
 
             <motion.div
               className="absolute top-[30%] left-[15%] w-36 h-36 will-change-transform"
-              animate={{ 
+              animate={{
                 y: [0, -35, 0],
                 x: [0, 25, 0],
               }}
               transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             >
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-[#d4af3718] to-transparent blur-xl"/>
+              <div className="w-full h-full rounded-full bg-gradient-to-br from-[#d4af3718] to-transparent blur-xl" />
             </motion.div>
           </>
         )}
@@ -133,7 +156,7 @@ export default function Hero() {
               left: `${(i * 13) % 100}%`,
               top: `${(i * 17) % 100}%`
             }}
-            animate={{ 
+            animate={{
               y: [-20, -120],
               opacity: [0, 1, 0]
             }}
@@ -156,15 +179,15 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="inline-flex items-center gap-4 mb-8 md:mb-12"
         >
-          <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#b8962e]"/>
+          <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#1a1a1a]" />
           <span className="text-xs tracking-[4px] text-[#8a6d1a] font-medium uppercase">
             {settings.wedding.displayDate}
           </span>
-          <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#b8962e]"/>
+          <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#1a1a1a]" />
         </motion.div>
 
         {/* Names - Gradiente con tonos más profundos (Bronce/Oro Viejo) */}
-        <div className="relative">
+        <div className="relative mt-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -172,18 +195,18 @@ export default function Hero() {
             className="relative"
           >
             <motion.h1
-              className="font-playfair text-[clamp(5rem,12vw,7rem)] md:text-[clamp(5rem,15vw,8rem)] font-thin tracking-[0.02em] leading-[1.1]"
+              className={`${miFuente.className} text-[clamp(5rem,12vw,7rem)] md:text-[clamp(5rem,15vw,8rem)] leading-[1.1] tracking-wide px-8`}
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
             >
-              <span className="bg-gradient-to-r from-[#b8962e] via-[#8a6d1a] to-[#b8962e] bg-clip-text text-transparent drop-shadow-sm">
-                {settings.couple.bride.name.toUpperCase()}
+              <span className="text-[#1a1a1a] drop-shadow-sm">
+                {settings.couple.bride.name}
               </span>
             </motion.h1>
-            
-            <motion.div 
-              className="relative flex items-center justify-center my-6 md:my-10"
+
+            <motion.div
+              className="relative flex items-center justify-center my-2 md:my-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.8 }}
@@ -204,7 +227,7 @@ export default function Hero() {
                 </motion.div>
 
                 <motion.div className="relative px-6">
-                  <motion.span 
+                  <motion.span
                     className="text-[#8a6d1a] text-4xl font-normal italic font-playfair relative z-10 block"
                     animate={{ y: [0, -3, 0] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -228,16 +251,17 @@ export default function Hero() {
                 </motion.div>
               </div>
             </motion.div>
-            
+
             <motion.h1
-              className="font-playfair text-[clamp(5rem,12vw,7rem)] md:text-[clamp(5rem,15vw,8rem)] font-thin tracking-[0.02em] leading-[1.1]"
+              className={`${miFuente.className} text-[clamp(5rem,12vw,7rem)] md:text-[clamp(5rem,15vw,8rem)] leading-[1.4] tracking-wide px-5`}
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              <span className="bg-gradient-to-r from-[#b8962e] via-[#8a6d1a] to-[#b8962e] bg-clip-text text-transparent drop-shadow-sm">
-                {settings.couple.groom.name.toUpperCase()}
+              <span className="text-[#1a1a1a] drop-shadow-sm">
+                {settings.couple.groom.name}
               </span>
+
             </motion.h1>
           </motion.div>
 
@@ -248,16 +272,16 @@ export default function Hero() {
             transition={{ duration: 1, delay: 1.2 }}
             className="mt-8 md:mt-12 space-y-2"
           >
-            <p className="text-sm tracking-[3px] uppercase text-[#4a5d41] font-semibold">
+            <p className="text-sm tracking-[3px] uppercase text-[#1a1a1a] font-semibold">
               NOS UNIMOS EN MATRIMONIO
             </p>
             {settings.venue?.name && (
               <div className="flex items-center justify-center gap-3">
-                <div className="w-8 h-[0.5px] bg-[#8a6d1a50]"/>
-                <p className="text-xs tracking-[2px] uppercase text-[#8a6d1a]">
+                <div className="w-8 h-[0.5px] bg-[#1a1a1a50]" />
+                <p className="text-xs tracking-[2px] uppercase text-[#1a1a1a]">
                   {settings.venue.name}
                 </p>
-                <div className="w-8 h-[0.5px] bg-[#8a6d1a50]"/>
+                <div className="w-8 h-[0.5px] bg-[#8a6d1a50]" />
               </div>
             )}
           </motion.div>

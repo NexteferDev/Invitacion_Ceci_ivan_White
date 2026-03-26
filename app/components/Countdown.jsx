@@ -4,6 +4,12 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import settings from '../config/settings';
 
+import localFont from 'next/font/local'
+
+const miFuente = localFont({
+  src: '../fonts/mi-fuente.otf'
+});
+
 export default function Countdown() {
   const [timeLeft, setTimeLeft] = useState({
     days : 0,
@@ -243,8 +249,8 @@ export default function Countdown() {
             transition={{ duration: 1.2 }}
             viewport={{ once: true }}
           >
-            <span className="text-[#1a1a1a] uppercase">
-              RESERVA LA FECHA
+            <span className={`${miFuente.className} text-[clamp(4rem,10vw,7rem)] text-[#1a1a1a]`}>
+              Reserva la fecha
             </span>
           </motion.h2>
           

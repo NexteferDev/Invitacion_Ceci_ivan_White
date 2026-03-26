@@ -4,6 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import settings from '../config/settings';
+import localFont from 'next/font/local'
+
+const miFuente = localFont({
+  src: '../fonts/mi-fuente.otf'
+});
 
 export default function LoveStory() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -31,10 +36,10 @@ export default function LoveStory() {
   }));
 
   return (
-    <section id="love-story" className="min-h-screen py-40 bg-[#0a0a0a] relative overflow-hidden">
+    <section id="love-story" className="min-h-screen py-40 relative overflow-hidden">
       {/* Elegant Gradient Background - Same as Hero */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f]"/>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f8f6f2] via-[#f3f1ec] to-[#ece8df]"/>
         {/* Multiple gradient overlays for better distribution */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#d4af3715] via-transparent to-[#ff6b6b10]"/>
         <div className="absolute inset-0 bg-gradient-to-bl from-[#87a87810] via-transparent to-transparent"/>
@@ -78,7 +83,7 @@ export default function LoveStory() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: performance.animationLevel === 'none' ? 0 : 1.5, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-32"
+          className="text-center mb-20"
         >
           {/* Decorative Line */}
           <motion.div
@@ -90,22 +95,22 @@ export default function LoveStory() {
           />
 
           <motion.h2
-            className="font-playfair text-[clamp(4rem,10vw,7rem)] font-thin leading-[1.2] tracking-[0.02em]"
+            className={`${miFuente.className} text-[clamp(4rem,10vw,7rem)] text-[#1a1a1a] leading-[1.3] px-6`}
             initial={{ y: performance.animationLevel === 'none' ? 0 : 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: performance.animationLevel === 'none' ? 0 : 1.2, delay: performance.animationLevel === 'none' ? 0 : 0.2 }}
             viewport={{ once: true }}
           >
-            <span className="block bg-gradient-to-r from-[#faf8f3] via-[#d4af37] to-[#faf8f3] bg-clip-text text-transparent">
-              NUESTRO
+            <span className="text-[#1a1a1a]">
+             Nuestro
             </span>
-            <span className="block bg-gradient-to-r from-[#faf8f3] via-[#d4af37] to-[#faf8f3] bg-clip-text text-transparent mt-2">
-              VIAJE
+            <span className="block text-[#1a1a1a] mt-2">
+              Viaje
             </span>
           </motion.h2>
 
           <motion.p
-            className="mt-8 text-sm font-light tracking-[0.3em] uppercase text-[#faf8f3]/40"
+            className="mt-8 text-sm font-light tracking-[0.3em] uppercase text-[#1a1a1a]/50"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
@@ -123,7 +128,7 @@ export default function LoveStory() {
               transition={{ delay: 1.5 }}
             >
               <motion.div
-                className="w-px h-12 bg-gradient-to-b from-[#d4af37]/30 to-transparent will-change-transform"
+                className="w-px h-12 bg-gradient-to-b from-[#d4af37] to-transparent will-change-transform"
                 animate={performance.animationLevel === 'full' ? { scaleY: [1, 1.2, 1] } : {}}
                 transition={performance.animationLevel === 'full' ? { duration: 2, repeat: Infinity } : {}}
               />
@@ -185,17 +190,17 @@ export default function LoveStory() {
                         transition={{ duration: 0.3 }}
                       >
                         {/* Date */}
-                        <p className="text-xs tracking-[0.3em] uppercase text-[#d4af37]/50 mb-4">
+                        <p className="text-xs tracking-[0.3em] uppercase text-[#c9a227] mb-4">
                           {milestone.date}
                         </p>
 
                         {/* Title */}
-                        <h3 className="font-playfair text-4xl lg:text-5xl font-thin text-[#faf8f3]/90 mb-4 leading-tight">
+                        <h3 className="font-playfair text-4xl lg:text-5xl font-thin text-[#1a1a1a]/90 mb-4 leading-tight">
                           {milestone.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-base text-[#faf8f3]/50 font-light leading-relaxed max-w-sm mx-auto lg:mx-0 lg:ml-auto">
+                        <p className="text-base text-[#1a1a1a]/60 font-light leading-relaxed max-w-sm mx-auto lg:mx-0 lg:ml-auto">
                           {milestone.description}
                         </p>
 
@@ -233,7 +238,7 @@ export default function LoveStory() {
 
                         {/* Border Rings */}
                         <div className={`absolute inset-0 rounded-full border-2 border-[#d4af37]/20 transition-all ${mounted && performance.animationLevel === 'full' ? 'duration-500' : 'duration-0'} ${mounted && performance.animationLevel === 'full' && isHovered ? 'scale-105 border-[#d4af37]/40' : 'scale-100'}`} />
-                        <div className={`absolute inset-2 rounded-full border border-[#faf8f3]/10 transition-all ${mounted && performance.animationLevel === 'full' ? 'duration-700' : 'duration-0'} ${mounted && performance.animationLevel === 'full' && isHovered ? 'scale-110 opacity-0' : 'scale-100 opacity-100'}`} />
+                        <div className={`absolute inset-2 rounded-full border border-black/10 transition-all ${mounted && performance.animationLevel === 'full' ? 'duration-700' : 'duration-0'} ${mounted && performance.animationLevel === 'full' && isHovered ? 'scale-110 opacity-0' : 'scale-100 opacity-100'}`} />
 
                         {/* Number Overlay (subtle, on top of image) */}
                         {/*<div className={`absolute inset-0 flex items-end justify-center pb-8 pointer-events-none transition-opacity duration-500 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>*/}
@@ -286,12 +291,15 @@ export default function LoveStory() {
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <p className="font-playfair text-2xl lg:text-3xl font-thin italic text-[#faf8f3]/70 leading-relaxed">
-              Nos conocimos cuando menos lo esperábamos, sin saber que nuestras vidas cambiarían para siempre. Desde entonces hemos reído, crecido y superado retos, pero siempre juntos, convencidos de que el amor verdadero se construye con cada nuevo amanecer.
-              </p>
-              <cite className="block mt-8 text-xs tracking-[0.3em] uppercase text-[#d4af37]/40 not-italic">
+
+              <cite className="block mt-8 text-xs tracking-[0.3em] uppercase text-[#d4af37] not-italic">
                 — Nuestra historia de amor
               </cite>
+              
+              <p className="font-playfair text-2xl lg:text-3xl font-thin italic text-[#1a1a1a]/70 leading-relaxed">
+              Nos conocimos cuando menos lo esperábamos, sin saber que nuestras vidas cambiarían para siempre. Desde entonces hemos reído, crecido y superado retos, pero siempre juntos, convencidos de que el amor verdadero se construye con cada nuevo amanecer.
+              </p>
+              
             </motion.blockquote>
           </div>
         </motion.div>

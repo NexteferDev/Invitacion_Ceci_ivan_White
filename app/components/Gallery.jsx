@@ -7,6 +7,13 @@ import Image from 'next/image';
 import settings from '../config/settings';
 import Lightbox from './shared/Lightbox';
 
+import localFont from 'next/font/local'
+
+const miFuente = localFont({
+  src: '../fonts/mi-fuente.otf'
+});
+
+
 export default function Gallery() {
   const photos = settings.gallery;
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -27,7 +34,7 @@ export default function Gallery() {
 
   return (
     <>
-      <section id="gallery" className="min-h-screen flex items-center justify-center py-20 bg-[#1a1a1a]">
+      <section id="gallery" className="min-h-screen flex items-center justify-center py-20 bg-[#f3f1ec]">
 
         <div className="max-w-6xl w-full mx-auto px-6 relative z-10">
           <motion.div
@@ -45,15 +52,13 @@ export default function Gallery() {
               viewport={{ once: true }}
             />
             
-            <h2 className="font-playfair text-[clamp(3rem,8vw,5rem)] font-thin tracking-[0.02em] mb-5">
-              <span className="bg-gradient-to-r from-[#faf8f3] via-[#d4af37] to-[#faf8f3] bg-clip-text text-transparent">
-                NUESTROS MOMENTOS
-              </span>
+            <h2 className={`${miFuente.className} text-[clamp(4rem,10vw,7rem)] text-[#1a1a1a]`}>
+              Nuestros Momentos
             </h2>
-            <p className="text-lg font-light tracking-[2px] uppercase opacity-60 text-[#faf8f3]">
+            <p className="text-lg font-light tracking-[2px] uppercase opacity-60 text-[#1a1a1a]">
               Poco a poco empezamos a crecer juntos, compartiendo sueños e ilusiones, hasta que llegó el capítulo más esperado: 'Nos casamos'.
             </p>
-            <p className="text-sm text-[#d4af37]/50 mt-4">
+            <p className="text-sm text-[#c9a227] mt-4">
               Haz clic en cualquier imagen para verla en tamaño completo
             </p>
           </motion.div>
@@ -110,7 +115,7 @@ export default function Gallery() {
             viewport={{ once: true }}
             className="text-center mt-16"
           >
-            <p className="text-lg text-[#faf8f3] italic opacity-80 font-playfair">
+            <p className="text-lg text-[#1a1a1a] italic opacity-80 font-playfair">
               "Cada imagen cuenta una historia, pero nuestra historia apenas está comenzando..."
             </p>
           </motion.div>
